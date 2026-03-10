@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les Estivales du Moulin — Commande</title>
+  <link rel="preconnect" href="https://estivales.serveo.net">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Nunito', Arial, sans-serif;
+      background: #f5f0e8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 30px;
+    }
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+      max-width: 340px;
+      width: 100%;
+    }
+    .logo { font-size: 48px; margin-bottom: 10px; }
+    .title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #1a6b75;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 32px;
+    }
+    .loader {
+      border: 5px solid #eee;
+      border-top: 5px solid #1a6b75;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      animation: spin 0.9s linear infinite;
+      margin: 0 auto 20px auto;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .message {
+      font-size: 17px;
+      color: #333;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .submessage {
+      font-size: 13px;
+      color: #999;
+      margin-bottom: 24px;
+    }
+    .progress-bg {
+      background: #eee;
+      border-radius: 10px;
+      height: 8px;
+      width: 100%;
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+    .progress-bar {
+      height: 8px;
+      background: #1a6b75;
+      border-radius: 10px;
+      width: 0%;
+      animation: progress 3.5s linear forwards;
+    }
+    @keyframes progress { to { width: 100%; } }
+    .btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #f5a623, #e8941a);
+      color: white;
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 16px rgba(245,166,35,0.4);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    .btn.visible { opacity: 1; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">🌿</div>
+    <div class="title">Les Estivales du Moulin</div>
+    <div class="subtitle">Commande en ligne</div>
+
+    <div class="loader"></div>
+    <div class="message">Chargement du menu...</div>
+    <div class="submessage">Merci de patienter quelques secondes</div>
+
+    <div class="progress-bg">
+      <div class="progress-bar"></div>
+    </div>
+
+    <a class="btn" id="btn" href="https://estivales.serveo.net/pos/self-order">
+      Accéder au menu →
+    </a>
+  </div>
+
+  <script>
+    var url = "https://estivales.serveo.net/pos/self-order";
+
+    // Préchargement de la connexion Serveo en arrière-plan
+    fetch(url, { mode: 'no-cors', cache: 'no-store' }).catch(function(){});
+
+    // Redirection automatique après 3.5 secondes
+    setTimeout(function() {
+      window.location.href = url;
+    }, 3500);
+
+    // Bouton manuel visible après 2.5 secondes
+    setTimeout(function() {
+      document.getElementById('btn').classList.add('visible');
+    }, 2500);
+  </script>
+</body>
+</html>
