@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Les Estivales du Moulin — Commande</title>
-  <link rel="preconnect" href="http://estivales.serveousercontent.com">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -108,23 +107,20 @@
       <div class="progress-bar"></div>
     </div>
 
-    <a class="btn" id="btn" href="http://estivales.serveousercontent.com/pos/self-order/2?access_token=605e2cc3a45f4b53">
+    <a class="btn" id="btn" href="https://estivales.serveo.net/pos/self-order/2?access_token=605e2cc3a45f4b53">
       Accéder au menu →
     </a>
   </div>
 
   <script>
-    var url = "http://estivales.serveousercontent.com/pos/self-order/2?access_token=605e2cc3a45f4b53";
+    var url = "https://estivales.serveo.net/pos/self-order/2?access_token=605e2cc3a45f4b53";
 
-    // Préchargement de la connexion Serveo en arrière-plan
     fetch(url, { mode: 'no-cors', cache: 'no-store' }).catch(function(){});
 
-    // Redirection automatique après 3.5 secondes
     setTimeout(function() {
       window.location.href = url;
     }, 3500);
 
-    // Bouton manuel visible après 2.5 secondes
     setTimeout(function() {
       document.getElementById('btn').classList.add('visible');
     }, 2500);
