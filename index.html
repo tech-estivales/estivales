@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Les Estivales du Moulin — Commande</title>
-  <link rel="preconnect" href="https://estivales.serveo.net">
+  <link rel="preconnect" href="http://estivales.serveousercontent.com">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -108,13 +108,13 @@
       <div class="progress-bar"></div>
     </div>
 
-    <a class="btn" id="btn" href="https://estivales.serveousercontent.com/pos-self/2?access_token=605e2cc3a45f4b53">
+    <a class="btn" id="btn" href="http://estivales.serveousercontent.com/pos/self-order/2?access_token=605e2cc3a45f4b53">
       Accéder au menu →
     </a>
   </div>
 
   <script>
-    var url = "https://estivales.serveousercontent.com/pos-self/2?access_token=605e2cc3a45f4b53";
+    var url = "http://estivales.serveousercontent.com/pos/self-order/2?access_token=605e2cc3a45f4b53";
 
     // Préchargement de la connexion Serveo en arrière-plan
     fetch(url, { mode: 'no-cors', cache: 'no-store' }).catch(function(){});
